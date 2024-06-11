@@ -85,7 +85,7 @@ export default function Hero() {
                   transition: 'filter 0.5s ease',
                 }}
                 src={
-                  'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/fe4906ac-0a6a-4272-ae47-bb9c72eeb4e1/dd4t89c-405cd6d5-6075-4fb8-8ef2-88f13c8daf9f.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2ZlNDkwNmFjLTBhNmEtNDI3Mi1hZTQ3LWJiOWM3MmVlYjRlMVwvZGQ0dDg5Yy00MDVjZDZkNS02MDc1LTRmYjgtOGVmMi04OGYxM2M4ZGFmOWYucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.BjkuPs5vff9gex-I6Qx7NBTd5AECF8CnCtU2EuvtaEc'
+                  './pic2.png'
                 }
                 width='300'
                 alt='me'
