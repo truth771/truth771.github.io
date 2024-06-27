@@ -21,7 +21,7 @@ function HoverPaper({props}) {
             background: `linear-gradient(${alpha('#033363', 0.2)}, ${alpha('#021F3B', 0.2)})`,
             transition: 'border-color 0.23s ease, box-shadow 0.5s ease, transform 0.3s ease', 
             '&:hover': {
-                transform: 'scale(1.02) rotate(' + degree + 'deg)',
+                transform: 'scale(1.01) rotate(' + degree + 'deg)',
             },
         }}
         onMouseEnter={() => {setBorderColor('#90CAF9'); setDegree(Math.random() * 4 - 2);}}
