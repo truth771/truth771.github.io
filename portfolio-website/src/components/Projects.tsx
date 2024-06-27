@@ -1,17 +1,18 @@
 import * as React from 'react';
-import { useState } from 'react';
+
 import Box from '@mui/material/Box';
 import { alpha } from '@mui/material';
 import CardContent from '@mui/material/CardContent';
 import Container from '@mui/material/Container';
 import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper'
+
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Carousel from './Carousel.tsx';
+import HoverPaper from './HoverPaper.tsx';
 
 import GithubIcon from '@mui/icons-material/GitHub';
 
@@ -26,7 +27,7 @@ const tiers = [
     title: 'Noteworthy.ai',
     github: 'https://github.com/AksheetDUTTA123/noteworthy',
     devpost: 'https://devpost.com/software/noteworthy-ai',
-    blurb: 'Noteworthy.ai is a web app that we made for the Google x MHacks hackathon. Many college classes require you to make a cheat sheet for your exams, so this takes your notes and makes a 2-page cheat sheet that can be downloaded as a PDF or a LaTeX file.',
+    blurb: 'Many college classes require you to make a cheat sheet for your exams, so this web app takes your notes and makes a 2-page cheat sheet that can be downloaded as a PDF or a LaTeX file. Made at the Google x MHacks hackathon.',
     images: [
               {
                 label: 'Homepage',
@@ -64,31 +65,6 @@ const tiers = [
             ]
   },
 ];
-
-function HoverablePaper({props}) {
-  const [borderColor, setBorderColor] = useState(alpha('#FFF', 0.2));
-
-  return (
-    <Paper
-      elevation={24}
-      sx={{
-        p: 2,
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 4,
-        border: '1px solid',
-        borderColor: borderColor,
-        boxShadow: borderColor === '#90CAF9' ? '0 0 13px #90CAF9' : 'none',
-        background: `linear-gradient(${alpha('#033363', 0.2)}, ${alpha('#021F3B', 0.2)})`,
-        transition: 'border-color 0.23s ease, box-shadow 0.5s ease',
-      }}
-      onMouseEnter={() => setBorderColor('#90CAF9')}
-      onMouseLeave={() => setBorderColor(alpha('#FFF', 0.2))}
-    >
-      {props}
-    </Paper>
-  );
-}
 
 export default function Projects() {
   return (
@@ -137,7 +113,7 @@ export default function Projects() {
             sm={12}
             md={6}
           >
-            <HoverablePaper props={
+            <HoverPaper props={
               <CardContent>
                 <Box
                   sx={{
@@ -231,7 +207,7 @@ export default function Projects() {
                       </Tooltip>
                     </Stack>
               </CardContent>}>
-            </HoverablePaper>
+            </HoverPaper>
           </Grid>
         ))}
       </Grid>

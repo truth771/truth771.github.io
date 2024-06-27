@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import { motion } from "framer-motion";
 
 const logoStyle = {
-  width: '50px',
+  width: '40px',
   height: 'auto',
   cursor: 'pointer',
 };
@@ -30,21 +30,20 @@ const scrollToSection = (sectionId: string) => {
   }
 };
 
-function GlowingTypography ({section, margin, children}){
+function GlowingTypography ({section, children}){
   const [glow, setGlow] = React.useState("");
   
   return (
   <Typography 
     onClick={() => scrollToSection(section)} 
-    onMouseEnter={() => setGlow("0 0 10px #FFF, 0 0 15px #00b7ff, 0 0 25px #00b7ff")}
+    onMouseEnter={() => setGlow("drop-shadow(0 0 3px #FFF) drop-shadow(0 0 8px #00b7ff) drop-shadow(0 0 13px #00b7ff)")}
     onMouseLeave={() => setGlow("")}
     variant="body2" 
     color="text.primary"
     style={{
-      ...logoStyle,
-      textShadow: glow,
-      marginRight: margin+'px',
-      transition: 'text-shadow 0.2s ease',
+      filter: glow,
+      transition: 'filter 0.2s ease',
+      cursor: 'pointer',
     }}>
       {children}
     </Typography>
@@ -54,18 +53,20 @@ function GlowingTypography ({section, margin, children}){
 function GlowingImg({imgPath, section, alt}){
   const [glow, setGlow] = React.useState("");
 
-  return (<img
-    onClick={() => scrollToSection(section)}
-    onMouseEnter={() => setGlow("drop-shadow(0 0 4px #00b7ff)")}
-    onMouseLeave={() => setGlow("")}
-    src={ imgPath }
-    style={{
-      ...logoStyle,
-      filter: glow,
-      transition: 'filter 0.3s ease',
-    }}
-    alt={alt}
-  /> );
+  return (
+    <img
+      onClick={() => scrollToSection(section)}
+      onMouseEnter={() => setGlow("drop-shadow(0 0 2px #FFF) drop-shadow(0 0 7px #00b7ff) drop-shadow(0 0 12px #00b7ff)")}
+      onMouseLeave={() => setGlow("")}
+      src={ imgPath }
+      style={{
+        ...logoStyle,
+        filter: glow,
+        transition: 'filter 0.3s ease',
+      }} 
+      alt={alt}
+    />
+  );
 }
 
 function AppAppBar({ mode }: AppAppBarProps) {
@@ -103,7 +104,7 @@ function AppAppBar({ mode }: AppAppBarProps) {
             sx={(theme) => ({
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'space-between', // This will create maximum space between items
+              justifyContent: 'space-between', 
               flexShrink: 0,
               borderRadius: '99px',
               bgcolor:
@@ -126,7 +127,7 @@ function AppAppBar({ mode }: AppAppBarProps) {
                 alignItems: 'center',
               }}
             >
-              <GlowingImg section="hero" alt="rtlogo" imgPath={'./rtlogo.png'}/>
+              <GlowingImg section="hero" alt="rtlogo" imgPath={'./rt.png'}/>
             </Box>
             <Box
               sx={{
@@ -136,11 +137,11 @@ function AppAppBar({ mode }: AppAppBarProps) {
                 width: '200px'
               }}
             >
-              <GlowingTypography section="about" margin="0"> About </GlowingTypography>
+              <GlowingTypography section="about"> About </GlowingTypography>
               
-              <GlowingTypography section="experience" margin="33"> Experience </GlowingTypography>
+              <GlowingTypography section="experience"> Experience </GlowingTypography>
               
-              <GlowingTypography section="projects" margin="2"> Projects </GlowingTypography>              
+              <GlowingTypography section="projects" > Projects </GlowingTypography>              
             </Box>
           </Toolbar>
         </Container>

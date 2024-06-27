@@ -1,26 +1,29 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
+import HoverPaper from './HoverPaper.tsx';
 
 const items = [
   {
-    title: 'Undergraduate Research Assistant',
+    title: 'Undergraduate Research Assistant in the Ersal Research Group',
     description:
-      'Enjoy a meticulously crafted product where small touches make a significant impact on your overall experience.',
+      'Developing a method of artificially generating terrain data for autonomous vehicle simulations by taking FFTs of real-world terrain data and using a probabilistic model to generate new terrain data. Currently working on implementing the probabilistic model in Julia.',
+    logo: './umMechE.png'
   },
   {
     title: 'Quantitative Consulting and Finance Group',
     description:
-      'Working on a team to develop an algorithm to find statistical arbitrage using a SABR model. Currently implementing the Nelder-Mead algorithm in C++ as a minimization function',
+      'Developing a trading algorithm that finds statistical arbitrage opportunities using a SABR model. Finished implementing the Nelder-Mead algorithm in C++ as a minimization function, and now working on writing the functions for the SABR model parameters.',
+    logo: './qcf_square.png'
   },
   {
     title: 'Michigan Data Science Team',
     description:
-      'Real vs. Photoshopped Face Detector: Collaborated with a team to develop a Convolutional Neural Network on Jupyter using transfer learning with ResNet50 to train a model that can differentiate between a real and a photoshopped face with 72.3% accuracy Augmented data images to diversify training data and visualized results using GradCam.',
+      'Collaborated with a team to develop a Real vs. Photoshopped Face Detector. Designed a Convolutional Neural Network on Jupyter using transfer learning with ResNet50 to train a model that can differentiate between a real and a photoshopped face with 72.3% accuracy. Augmented data images to diversify training data and visualized results using GradCam.',
+    logo: './mdst.jpeg'
   },
 ];
 
@@ -57,30 +60,36 @@ export default function Experience() {
         <Grid container spacing={2.5}>
           {items.map((item, index) => (
             <Grid item xs={12} sm={6} md={12} key={index}>
-              <Stack
-                direction="column"
+              <HoverPaper props={
+                <Stack
+                direction="row"
                 color="inherit"
-                component={Card}
                 spacing={1}
+                alignItems="center"
                 useFlexGap
                 sx={{
-                  p: 3,
-                  height: '100%',
-                  border: '1px solid',
-                  borderColor: 'grey.800',
-                  background: 'transparent',
-                  backgroundColor: 'grey.900',
-                }}
-              >
-                <div>
-                  <Typography fontWeight="medium" variant="h6" gutterBottom>
+                }}> 
+                  <img src={item.logo} alt={item.title} style={{width: 'auto', height: '110px', objectFit: 'contain' }} />
+                  <Stack
+                  direction="column"
+                  color="inherit"
+                  spacing={1}
+                  useFlexGap
+                  sx={{
+                    p: 3,
+                    height: '100%',
+                  }}
+                >
+                  <Typography fontWeight="medium" variant="h6" gutterBottom sx={{ fontSize: '1.5rem' }} >
                     {item.title}
                   </Typography>
                   <Typography variant="body1" sx={{ color: 'grey.400' }}>
                     {item.description}
                   </Typography>
-                </div>
+                </Stack>
               </Stack>
+              }>
+              </HoverPaper>
             </Grid>
           ))}
         </Grid>

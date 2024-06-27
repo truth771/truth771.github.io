@@ -7,11 +7,51 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import { motion } from "framer-motion";
+import Typed from 'typed.js';
 
 import FacebookIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import TextSnippetIcon from '@mui/icons-material/TextSnippet';
 import EmailIcon from '@mui/icons-material/Email';
+
+function TypingName() {
+  // Create reference to store the DOM element containing the animation
+  const el = React.useRef(null);
+
+  React.useEffect(() => {
+    const typed = new Typed(el.current, {
+      strings: ['Ruthesh Thavamani'],
+      typeSpeed: 65,
+      startDelay: 1100,
+      backSpeed: 65,
+      backDelay: 4000,
+      loop: true,
+    });
+
+    return () => {
+      // Destroy Typed instance during cleanup to stop animation
+      typed.destroy();
+    };
+  }, []);
+
+  return (
+    <Typography
+      variant="h1"
+      sx={{
+        display: 'flex',
+        flexDirection: 'row' ,
+        alignItems: 'center',
+        justifyContent: 'center',
+        textAlign: 'center',
+        userSelect: 'none',
+        fontSize: '3.5rem',
+      }}
+    >
+      <span ref={el} />
+    </Typography>
+  );
+}
+
 
 export default function Hero() {
   const [tooltipTitle, setTooltipTitle] = useState('Email');
@@ -111,20 +151,7 @@ export default function Hero() {
               },
             }}
           >
-          <Typography
-            variant="h1"
-            sx={{
-              display: 'flex',
-              flexDirection: { xs: 'column', md: 'row' },
-              alignItems: 'center',
-              justifyContent: 'center',
-              textAlign: 'center',
-              userSelect: 'none',
-              fontSize: 'clamp(3.5rem, 10vw, 4rem)',
-            }}
-          >
-            Ruthesh Thavamani
-          </Typography>
+          <TypingName />
             <Stack
               direction="row"
               justifyContent="center"
@@ -138,7 +165,7 @@ export default function Hero() {
                 <IconButton
                   onClick={copyToClipboard}
                   aria-label="Email"
-                  sx={{ alignSelf: 'center', color: emailIconColor, transition: "color 0.3s ease" }}
+                  sx={{ alignSelf: 'center', color: emailIconColor, transition: "color 0.4s ease" }}
                   onMouseEnter={() => setEmailIconColor("#90CAF9")}
                   onMouseLeave={() => setEmailIconColor("#B8BABC")}
                 >
@@ -154,7 +181,7 @@ export default function Hero() {
                 >
                   <IconButton
                     aria-label="GitHub"
-                    sx={{ alignSelf: 'center', color: githubIconColor, transition: "color 0.3s ease" }}
+                    sx={{ alignSelf: 'center', color: githubIconColor, transition: "color 0.4s ease" }}
                     onMouseEnter={() => setGithubIconColor("#90CAF9")}
                     onMouseLeave={() => setGithubIconColor("#B8BABC")}
                   >
@@ -171,7 +198,7 @@ export default function Hero() {
                 >
                   <IconButton
                     aria-label="LinkedIn"
-                    sx={{ alignSelf: 'center', color: linkedinIconColor, transition: "color 0.3s ease" }}
+                    sx={{ alignSelf: 'center', color: linkedinIconColor, transition: "color 0.4s ease" }}
                     onMouseEnter={() => setLinkedinIconColor("#90CAF9")}
                     onMouseLeave={() => setLinkedinIconColor("#B8BABC")}
                   >
@@ -188,7 +215,7 @@ export default function Hero() {
                 >
                   <IconButton
                     aria-label="Resume"
-                    sx={{ alignSelf: 'center', color: resumeIconColor, transition: "color 0.3s ease"}}
+                    sx={{ alignSelf: 'center', color: resumeIconColor, transition: "color 0.4s ease"}}
                     onMouseEnter={() => setResumeIconColor("#90CAF9")}
                     onMouseLeave={() => setResumeIconColor("#B8BABC")}
                   >
