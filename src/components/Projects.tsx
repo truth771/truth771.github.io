@@ -11,7 +11,7 @@ import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import Carousel from './Carousel.tsx';
+import Carousel from './ProjectCarousel.tsx';
 import HoverPaper from './HoverPaper.tsx';
 
 import GithubIcon from '@mui/icons-material/GitHub';

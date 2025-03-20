@@ -3,6 +3,15 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+import Carousel from './PicSlideshow.tsx';
+
+const images = [
+  {
+    label: 'pic1',
+    imgPath:
+      '/pic1.jpg',
+  },
+]
 
 export default function Features() {
   return (
@@ -27,8 +36,9 @@ export default function Features() {
           About
         </Typography>
 
-        <Grid container spacing={6}>
-          <Grid item xs={12} md={6}>
+        <Grid container spacing={0}>
+          <Grid item xs={12} md={8}>
+          <Box sx={{ width: '100%', alignContent: 'center', justifyItems: 'center'}}>
           <Typography
             variant="h5"
             color="text.secondary"
@@ -44,12 +54,6 @@ export default function Features() {
             I'm studying <span style={{ color: '#72D2FE', fontWeight: 'bold' }}>CSE</span> and pursuing a Bachelor's Degree at the University of Michigan, expecting to graduate in 2026. 
             Some of the areas I'm interested in are <span style={{ color: '#72D2FE', fontWeight: 'bold' }}>Fintech</span> and <span style={{ color: '#72D2FE', fontWeight: 'bold' }}>ML/AI</span>.
           </Typography>
-          </Grid>
-          <Grid
-            item
-            xs={12}
-            md={6}
-          >
           <Typography
             variant="h5"
             color="text.secondary"
@@ -64,8 +68,17 @@ export default function Features() {
           >
             In the meantime, check out the rest of my website<span style={{ color: '#72D2FE', fontWeight: 'bold' }}>!</span>
           </Typography>
+          </Box>
           </Grid>
-          
+          <Grid
+            item
+            xs={12}
+            md={4}
+          >
+            <Box sx={{ width: '100%', display: 'flex', justifyContent: 'right'}}>
+              <Carousel images={images} />
+            </Box>
+          </Grid>
         </Grid>
       </Container>
     </Box>

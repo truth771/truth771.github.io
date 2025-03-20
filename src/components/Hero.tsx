@@ -125,7 +125,7 @@ export default function Hero() {
                   transition: 'filter 0.5s ease',
                 }}
                 src={
-                  './pic2.png'
+                  './emoji.png'
                 }
                 width='300'
                 alt='me'

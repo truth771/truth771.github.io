@@ -42,6 +42,8 @@ export default function SwipeableTextMobileStepper( {images} ) {
         sx={{
           display: 'flex',
           alignItems: 'center',
+          borderTopRightRadius: 8,
+          borderTopLeftRadius: 8,
           height: 50,
           pl: 2,
           bgcolor: `${alpha('#090E10', 0.5)}`,
@@ -77,7 +79,7 @@ export default function SwipeableTextMobileStepper( {images} ) {
         steps={maxSteps}
         position="static"
         activeStep={activeStep}
-        sx={{bgcolor: `${alpha('#090E10', 0.5)}`,}}
+        sx={{bgcolor: `${alpha('#090E10', 0.5)}`, borderBottomLeftRadius: 8, borderBottomRightRadius: 8,}}
         nextButton={
           <Button
             size="small"

@@ -69,7 +69,7 @@ export default function Experience() {
                 useFlexGap
                 sx={{
                 }}> 
-                  <img src={item.logo} alt={item.title} style={{width: 'auto', height: '110px', objectFit: 'contain' }} />
+                  <img src={item.logo} alt={item.title} style={{width: 'auto', height: '110px', objectFit: 'contain', borderRadius: '8px'}} />
                   <Stack
                   direction="column"
                   color="inherit"
