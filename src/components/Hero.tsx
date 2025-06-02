@@ -20,7 +20,7 @@ function TypingName() {
 
   React.useEffect(() => {
     const typed = new Typed(el.current, {
-      strings: ['Ruthesh Thavamani'],
+      strings: ['Test'],
       typeSpeed: 65,
       startDelay: 1100,
       backSpeed: 65,
