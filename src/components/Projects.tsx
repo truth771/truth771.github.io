@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import Box from '@mui/material/Box';
-import { alpha } from '@mui/material';
 import CardContent from '@mui/material/CardContent';
 import Container from '@mui/material/Container';
 import Divider from '@mui/material/Divider';
@@ -70,14 +69,11 @@ export default function Projects() {
   return (
     <Box // for the gradient
       sx={(theme) => ({
-      backgroundImage:
-        theme.palette.mode === 'light'
-          ? 'linear-gradient(0deg, #FFF, #CEE5FD)'
-          : `linear-gradient(${alpha('#090E10', 0.0)}, #02294F)`,
+      backgroundImage: '#02294F',
       backgroundSize: '100% 35%',
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'bottom',
-      bgcolor: '#232428',
+      // bgcolor: '#232428',
     })}>
 
     <Container

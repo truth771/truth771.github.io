@@ -13,11 +13,17 @@ function HoverPaper({props}) {
             p: 2,
             display: 'flex',
             flexDirection: 'column',
-            border: '1px solid',
-            borderRadius: '10px',
+            borderRadius: '20px',
             borderColor: borderColor,
-            boxShadow: borderColor === '#90CAF9' ? '0 0 13px #90CAF9' : 'none',
-            background: `linear-gradient(${alpha('#033363', 0.2)}, ${alpha('#021F3B', 0.2)})`,
+            background: `linear-gradient(135deg, ${alpha('#ffffff', 0.2)}, ${alpha('#ffffff', 0)})`,
+            backdropFilter: 'blur(8px)',
+            border: '1px solid rgba(255,255,255,0.3)',
+            boxShadow: `
+              0 8px 32px rgba(0,0,0,0.1),
+              inset 0 1px 0 rgba(255,255,255,0.5),
+              inset 0 -1px 0 rgba(255,255,255,0.1),
+              inset 0 0 2px 1px rgba(255,255,255,0.1)
+            `,
             transition: 'border-color 0.23s ease, box-shadow 0.5s ease, transform 0.3s ease', 
             '&:hover': {
                 transform: 'scale(1.015)',

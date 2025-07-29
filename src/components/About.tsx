@@ -7,9 +7,19 @@ import Carousel from './PicSlideshow.tsx';
 
 const images = [
   {
+    label: 'pic2',
+    imgPath:
+      '/pic2.jpg',
+  },
+  {
     label: 'pic1',
     imgPath:
       '/pic1.jpg',
+  },
+  {
+    label: 'pic3',
+    imgPath:
+      '/pic3.jpg',
   },
 ]
 
@@ -21,7 +31,7 @@ export default function Features() {
         pt: { xs: 4, sm: 12 },
         pb: { xs: 8, sm: 16 },
         color: 'white',
-        bgcolor: '#232428',
+        // bgcolor: '#232428',
       }}
     >
       <Container sx={{ 
@@ -38,21 +48,20 @@ export default function Features() {
 
         <Grid container spacing={0}>
           <Grid item xs={12} md={8}>
-          <Box sx={{ width: '100%', alignContent: 'center', justifyItems: 'center'}}>
           <Typography
             variant="h5"
             color="text.secondary"
             sx={{ mb: { xs: 2, sm: 4 } }}
           >
-            <span style={{ color: '#72D2FE', fontWeight: 'bold' }}>Hello!</span> I'm <span style={{ color: '#72D2FE', fontWeight: 'bold' }}>Ruthesh</span>. 
+            <span style={{ color: '#e8bffb', fontWeight: 'bold' }}>Hello!</span> I'm <span style={{ color: '#e8bffb', fontWeight: 'bold' }}>Ruthesh</span>. 
           </Typography>
           <Typography
             variant="h5"
             color="text.secondary"
             sx={{ mb: { xs: 2, sm: 4 } }}
           >
-            I'm studying <span style={{ color: '#72D2FE', fontWeight: 'bold' }}>CSE</span> and pursuing a Bachelor's Degree at the University of Michigan, expecting to graduate in 2026. 
-            Some of the areas I'm interested in are <span style={{ color: '#72D2FE', fontWeight: 'bold' }}>Fintech</span> and <span style={{ color: '#72D2FE', fontWeight: 'bold' }}>ML/AI</span>.
+            I'm studying <span style={{ color: '#e8bffb', fontWeight: 'bold' }}>CSE</span> and pursuing a Bachelor's Degree at the <span style={{ color: '#e8bffb', fontWeight: 'bold' }}>University of Michigan</span>, expecting to graduate in 2026. 
+            Some of the areas I'm interested in are <span style={{ color: '#e8bffb', fontWeight: 'bold' }}>Fintech</span> and <span style={{ color: '#e8bffb', fontWeight: 'bold' }}>ML/AI</span>.
           </Typography>
           <Typography
             variant="h5"
@@ -66,9 +75,8 @@ export default function Features() {
             color="text.secondary"
             sx={{ mb: { xs: 2, sm: 4 } }}
           >
-            In the meantime, check out the rest of my website<span style={{ color: '#72D2FE', fontWeight: 'bold' }}>!</span>
+            In the meantime, check out the rest of my website<span style={{ color: '#e8bffb', fontWeight: 'bold' }}>!</span>
           </Typography>
-          </Box>
           </Grid>
           <Grid
             item

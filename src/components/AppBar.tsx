@@ -3,8 +3,6 @@ import { PaletteMode } from '@mui/material';
 import Box from '@mui/material/Box';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
 import { motion } from "framer-motion";
 
 const logoStyle = {
@@ -19,7 +17,7 @@ interface AppAppBarProps {
 
 const scrollToSection = (sectionId: string) => {
   const sectionElement = document.getElementById(sectionId);
-  const offset = 128;
+  const offset = 80;
   if (sectionElement) {
     const targetScroll = sectionElement.offsetTop - offset;
     sectionElement.scrollIntoView({ behavior: 'smooth' });
@@ -30,35 +28,35 @@ const scrollToSection = (sectionId: string) => {
   }
 };
 
-function GlowingTypography ({section, children}){
-  const [glow, setGlow] = React.useState("");
-  
+function UnderlinedText ({section, currSection, children}){
   return (
-  <Typography 
-    onClick={() => scrollToSection(section)} 
-    onMouseEnter={() => setGlow("drop-shadow(0 0 3px #FFF) drop-shadow(0 0 8px #00b7ff) drop-shadow(0 0 13px #00b7ff)")}
-    onMouseLeave={() => setGlow("")}
-    variant="body2" 
+  <div 
+    className={currSection === section ? 'underline-text' : 'text'}
+    onClick={() => scrollToSection(section)}
     color="text.primary"
     style={{
-      filter: glow,
-      transition: 'filter 0.2s ease',
       cursor: 'pointer',
     }}>
       {children}
-    </Typography>
+    </div>
   );
 }
 
-function GlowingImg({imgPath, section, alt}){
+function GlowingImg({imgPath, section, currSection, alt}){
   const [glow, setGlow] = React.useState("");
+
+  React.useEffect(() => {
+    if (currSection === "home") {
+      setGlow("drop-shadow(0 0 2px #FFF) drop-shadow(0 0 7px #9169c1) drop-shadow(0 0 12px #9169c1)");
+    } else {
+      setGlow("");
+    }
+  }, [currSection]);
 
   return (
     <img
       onClick={() => scrollToSection(section)}
-      onMouseEnter={() => setGlow("drop-shadow(0 0 2px #FFF) drop-shadow(0 0 7px #00b7ff) drop-shadow(0 0 12px #00b7ff)")}
-      onMouseLeave={() => setGlow("")}
-      src={ imgPath }
+      src={imgPath}
       style={{
         ...logoStyle,
         filter: glow,
@@ -70,6 +68,35 @@ function GlowingImg({imgPath, section, alt}){
 }
 
 function AppAppBar({ mode }: AppAppBarProps) {
+  const [activeSection, setActiveSection] = React.useState<string>('home');
+
+  React.useEffect(() => {
+    const sections = document.querySelectorAll('section');
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.4,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    }, options);
+
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+
+    return () => {
+      sections.forEach((section) => {
+        observer.unobserve(section);
+      });
+    };
+  }, []);
+
   return (
     <motion.div 
       className="md:w-96"
@@ -96,30 +123,35 @@ function AppAppBar({ mode }: AppAppBarProps) {
           bgcolor: 'transparent',
           backgroundImage: 'none',
           mt: 2,
+          width: '95vw',   // 90vw width
+          mx: 'auto',      // Center horizontally
+          left: 0,
+          right: 0,
         }}
       >
-        <Container maxWidth="lg">
           <Toolbar
-            variant="regular"
-            sx={(theme) => ({
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between', 
-              flexShrink: 0,
-              borderRadius: '99px',
-              bgcolor:
-                theme.palette.mode === 'light'
-                  ? 'rgba(255, 255, 255, 0.3)'
-                  : 'rgba(0, 0, 0, 0.2)',
-              backdropFilter: 'blur(24px)',
-              maxHeight: 40,
-              border: '1px solid',
-              borderColor: 'divider',
-              boxShadow:
-                theme.palette.mode === 'light'
-                  ? `0 0 1px rgba(85, 166, 246, 0.1), 1px 1.5px 2px -1px rgba(85, 166, 246, 0.15), 4px 4px 12px -2.5px rgba(85, 166, 246, 0.15)`
-                  : '0 0 1px rgba(2, 31, 59, 0.7), 1px 1.5px 2px -1px rgba(2, 31, 59, 0.65), 4px 4px 12px -2.5px rgba(2, 31, 59, 0.65)',
-            })}
+          variant="regular"
+          sx={(theme) => ({
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            flexShrink: 0,
+            borderRadius: '20px',
+            bgcolor:
+              theme.palette.mode === 'light'
+                ? 'rgba(255, 255, 255, 0.33)'
+                : 'rgba(0, 0, 0, 0.33)',
+            backdropFilter: 'blur(8px)',
+            border: '1px solid rgba(255,255,255,0.3)',
+            boxShadow: `
+              0 8px 32px rgba(0,0,0,0.1),
+              inset 0 1px 0 rgba(255,255,255,0.5),
+              inset 0 -1px 0 rgba(255,255,255,0.1),
+              inset 0 0 2px 1px rgba(255,255,255,0.1)
+            `,
+            position: 'relative',
+            overflow: 'hidden',
+          })}
           >
             <Box
               sx={{
@@ -127,7 +159,7 @@ function AppAppBar({ mode }: AppAppBarProps) {
                 alignItems: 'center',
               }}
             >
-              <GlowingImg section="hero" alt="rtlogo" imgPath={'./rt.png'}/>
+              <GlowingImg section="hero" currSection={activeSection} alt="rtlogo" imgPath={'./rt.png'}/>
             </Box>
             <Box
               sx={{
@@ -137,14 +169,13 @@ function AppAppBar({ mode }: AppAppBarProps) {
                 width: '200px'
               }}
             >
-              <GlowingTypography section="about"> About </GlowingTypography>
+              <UnderlinedText section="about" currSection={activeSection}> About </UnderlinedText>
               
-              <GlowingTypography section="experience"> Experience </GlowingTypography>
+              <UnderlinedText section="experience" currSection={activeSection}> Experience </UnderlinedText>
               
-              <GlowingTypography section="projects" > Projects </GlowingTypography>              
+              <UnderlinedText section="projects" currSection={activeSection}> Projects </UnderlinedText>              
             </Box>
           </Toolbar>
-        </Container>
       </AppBar>
     </motion.div>
   )

@@ -18,7 +18,7 @@ export default function PicSlideshow( {images} ) {
           activeStep === maxSteps - 1 ? 0 : activeStep + 1
         );
       }
-    }, 2500);
+    }, 5000);
 
     return () => clearTimeout(timer);
   }, [activeStep, pause, maxSteps]);
@@ -36,7 +36,8 @@ export default function PicSlideshow( {images} ) {
                   width: 260,
                   flexDirection: 'column',
                   borderColor: borderColor,
-                  boxShadow: borderColor === '#90CAF9' ? '0 0 13px #90CAF9' : 'none',
+                  border: '1px solid rgba(255,255,255,0.3)',
+                  boxShadow: borderColor === '#90CAF9' ? '0 0 13px #9169c1' : 'none',
                   background: `linear-gradient(${alpha('#033363', 0.2)}, ${alpha('#021F3B', 0.2)})`,
                   transition: 'border-color 0.23s ease, box-shadow 0.5s ease, transform 0.3s ease', 
                   '&:hover': {

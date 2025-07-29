@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { useTheme } from '@mui/material/styles';
-import { alpha } from '@mui/material';
 import Box from '@mui/material/Box';
 import MobileStepper from '@mui/material/MobileStepper';
 import Paper from '@mui/material/Paper';
@@ -15,11 +14,12 @@ export default function SwipeableTextMobileStepper( {images} ) {
   const [activeStep, setActiveStep] = React.useState(0);
   const maxSteps = images.length;
 
-  setTimeout(() => {
-    setActiveStep(
-      activeStep === images.length - 1 ? 0 : activeStep + 1
-    );
-  }, 2500);
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      setActiveStep((prev) => (prev === maxSteps - 1 ? 0 : prev + 1));
+    }, 2500);
+    return () => clearTimeout(timer);
+  }, [activeStep, maxSteps]);
 
 
   const handleNext = () => {
@@ -46,7 +46,15 @@ export default function SwipeableTextMobileStepper( {images} ) {
           borderTopLeftRadius: 8,
           height: 50,
           pl: 2,
-          bgcolor: `${alpha('#090E10', 0.5)}`,
+          bgcolor: 'rgba(0, 0, 0, 0.6)',
+          backdropFilter: 'blur(8px)',
+          // border: '1px solid rgba(255,255,255,0.3)',
+          // boxShadow: `
+          //   0 8px 32px rgba(0,0,0,0.1),
+          //   inset 0 1px 0 rgba(255,255,255,0.5),
+          //   inset 0 -1px 0 rgba(255,255,255,0.1),
+          //   inset 0 0 2px 1px rgba(255,255,255,0.1)
+          // `,
         }}
       >
         <Typography>{images[activeStep].label}</Typography>
@@ -79,11 +87,29 @@ export default function SwipeableTextMobileStepper( {images} ) {
         steps={maxSteps}
         position="static"
         activeStep={activeStep}
-        sx={{bgcolor: `${alpha('#090E10', 0.5)}`, borderBottomLeftRadius: 8, borderBottomRightRadius: 8,}}
+        sx={{
+          borderBottomLeftRadius: 8, 
+          borderBottomRightRadius: 8,
+          '.MuiMobileStepper-dotActive': {
+            backgroundColor: '#e8bffb',
+          },
+          bgcolor: 'rgba(0, 0, 0, 0.6)',
+          backdropFilter: 'blur(8px)',
+          // border: '1px solid rgba(255,255,255,0.3)',
+          // boxShadow: `
+          //   0 8px 32px rgba(0,0,0,0.1),
+          //   inset 0 1px 0 rgba(255,255,255,0.5),
+          //   inset 0 -1px 0 rgba(255,255,255,0.1),
+          //   inset 0 0 2px 1px rgba(255,255,255,0.1)
+          // `,
+        }}
         nextButton={
           <Button
             size="small"
             onClick={handleNext}
+            sx={{
+              color: '#e8bffb'
+            }}
           >
             
             {theme.direction === 'rtl' ? (
@@ -94,7 +120,13 @@ export default function SwipeableTextMobileStepper( {images} ) {
           </Button>
         }
         backButton={
-          <Button size="small" onClick={handleBack} >
+          <Button 
+            size="small" 
+            onClick={handleBack} 
+            sx={{
+              color: '#e8bffb'
+            }}
+          >
             {theme.direction === 'rtl' ? (
               <KeyboardArrowRight />
             ) : (

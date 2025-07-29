@@ -21,14 +21,14 @@ export default function App() {
     <ThemeProvider theme={showCustomTheme ? LPtheme : defaultTheme}>
       <CssBaseline />
       <AppAppBar mode={mode} />
-      <Hero />
+       <section id="home"><Hero /></section>
       <Divider />
       <Box sx={{ bgcolor: 'background.default' }}>
-        <About />
+        <section id="about"><About /></section>
         <Divider />
-        <Experience />
+        <section id="experience"><Experience /></section>
         <Divider />
-        <Projects />
+        <section id="projects"><Projects /></section>
       </Box>
     </ThemeProvider>
   );

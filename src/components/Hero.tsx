@@ -11,7 +11,6 @@ import Typed from 'typed.js';
 
 import FacebookIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import TextSnippetIcon from '@mui/icons-material/TextSnippet';
 import EmailIcon from '@mui/icons-material/Email';
 
 function TypingName() {
@@ -20,12 +19,10 @@ function TypingName() {
 
   React.useEffect(() => {
     const typed = new Typed(el.current, {
-      strings: ['Test'],
+      strings: ['Ruthesh Thavamani'],
       typeSpeed: 65,
       startDelay: 1100,
-      backSpeed: 65,
-      backDelay: 4000,
-      loop: true,
+      loop: false,
     });
 
     return () => {
@@ -72,7 +69,6 @@ export default function Hero() {
   const [emailIconColor, setEmailIconColor] = useState('#B8BABC');
   const [githubIconColor, setGithubIconColor] = useState('#B8BABC');
   const [linkedinIconColor, setLinkedinIconColor] = useState('#B8BABC');
-  const [resumeIconColor, setResumeIconColor] = useState('#B8BABC');
 
   return (
     <Box
@@ -80,10 +76,7 @@ export default function Hero() {
       sx={(theme) => ({
         width: '100%',
         height: '100vh',
-        backgroundImage:
-          theme.palette.mode === 'light'
-            ? 'linear-gradient(180deg, #CEE5FD, #FFF)'
-            : `linear-gradient(#02294F, ${alpha('#090E10', 0.0)})`,
+        backgroundImage: '#090E10',
         backgroundSize: '100% 70%',
         bgcolor: '#1E1F22',
         backgroundRepeat: 'no-repeat',
@@ -121,7 +114,7 @@ export default function Hero() {
                 onMouseEnter={() => setBorderColor('#90CAF9')}
                 onMouseLeave={() => setBorderColor(alpha('#FFF', 0))}
                 style={{
-                  filter: borderColor === '#90CAF9' ? 'drop-shadow(0 0 10px #90CAF9)' : 'none',
+                  filter: borderColor === '#90CAF9' ? 'drop-shadow(0 0 10px #9169c1)' : 'none',
                   transition: 'filter 0.5s ease',
                 }}
                 src={
@@ -166,7 +159,7 @@ export default function Hero() {
                   onClick={copyToClipboard}
                   aria-label="Email"
                   sx={{ alignSelf: 'center', color: emailIconColor, transition: "color 0.4s ease" }}
-                  onMouseEnter={() => setEmailIconColor("#90CAF9")}
+                  onMouseEnter={() => setEmailIconColor("#e8bffb")}
                   onMouseLeave={() => setEmailIconColor("#B8BABC")}
                 >
                   <EmailIcon />
@@ -182,7 +175,7 @@ export default function Hero() {
                   <IconButton
                     aria-label="GitHub"
                     sx={{ alignSelf: 'center', color: githubIconColor, transition: "color 0.4s ease" }}
-                    onMouseEnter={() => setGithubIconColor("#90CAF9")}
+                    onMouseEnter={() => setGithubIconColor("#e8bffb")}
                     onMouseLeave={() => setGithubIconColor("#B8BABC")}
                   >
                     <FacebookIcon />
@@ -199,27 +192,10 @@ export default function Hero() {
                   <IconButton
                     aria-label="LinkedIn"
                     sx={{ alignSelf: 'center', color: linkedinIconColor, transition: "color 0.4s ease" }}
-                    onMouseEnter={() => setLinkedinIconColor("#90CAF9")}
+                    onMouseEnter={() => setLinkedinIconColor("#e8bffb")}
                     onMouseLeave={() => setLinkedinIconColor("#B8BABC")}
                   >
                     <LinkedInIcon />
-                  </IconButton>
-                </a>
-              </Tooltip>
-
-              <Tooltip title="Resume">
-                <a 
-                  href="https://drive.google.com/file/d/13CW2kPCE0r12ee0VgTHwN1eRuK1ovcFM/view?usp=sharing" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                >
-                  <IconButton
-                    aria-label="Resume"
-                    sx={{ alignSelf: 'center', color: resumeIconColor, transition: "color 0.4s ease"}}
-                    onMouseEnter={() => setResumeIconColor("#90CAF9")}
-                    onMouseLeave={() => setResumeIconColor("#B8BABC")}
-                  >
-                    <TextSnippetIcon />
                   </IconButton>
                 </a>
               </Tooltip>

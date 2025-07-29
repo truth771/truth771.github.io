@@ -5,24 +5,42 @@ import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import HoverPaper from './HoverPaper.tsx';
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 
 const items = [
   {
-    title: 'Undergraduate Research Assistant in the Ersal Research Group',
+    title: 'SWE Intern @ The Trade Desk',
+    date: 'Summer 2025',
     description:
-      'Developing a method of artificially generating terrain data for autonomous vehicle simulations by taking FFTs of real-world terrain data and using a probabilistic model to generate new terrain data. Currently working on implementing the probabilistic model in Julia.',
+      'Implemented a data pipeline in Scala using Apache Spark on an AWS EMR cluster to compute and export key metrics on external user IDs to S3 for monitoring and analysis. Scheduled the pipeline using Apache Airflow to ensure timely and reliable metric updates. Built a Databricks dashboard with SQL queries to visualize metrics and trends, enabling traders to determine the significance of a given external user ID.',
+    logo: './ttd.jpg'
+  },
+  {
+    title: 'SWE Intern @ Sorcea Labs',
+    date: 'Winter 2025',
+    description:
+      'Developed a web scraping pipeline to extract over 7,000 skincare products from Amazon, Ulta, and Sephora. Built an AWS Lambda function to clean and format product information using regular expressions and exported to DynamoDB for efficient querying. Designed a content-based semantic search system using Amazon Bedrock Embeddings and Anthropic’s Claude within a RAG framework to return contextually accurate results to user queries',
+    logo: './sorcealabs.jpeg'
+  },
+  {
+    title: 'Undergraduate Research Assistant @ Ersal Research Group',
+    date: 'Summer + Fall 2025',
+    description:
+      'Developed a method of artificially generating terrains by simulating fractal Brownian surfaces, modeled as random Gaussian fields characterized by a fractal dimension, to create realistic landscapes in Julia. Implemented a function utilizing box-counting and epsilon-oscillation algorithms to estimate fractal dimensions. Assessed the realism of generated terrains by conducting vehicle simulations in Blender, verifying that the results closely resembled those obtained from real-world terrain.',
     logo: './umMechE.png'
   },
   {
-    title: 'Quantitative Consulting and Finance Group',
+    title: 'PM @ Quantitative Consulting and Finance Group',
+    date: 'Winter 2024 - Present',
     description:
-      'Developing a trading algorithm that finds statistical arbitrage opportunities using a SABR model. Finished implementing the Nelder-Mead algorithm in C++ as a minimization function, and now working on writing the functions for the SABR model parameters.',
+    'Implemented a momentum-based trading strategy with an RNN that predicts optimal asset positions. Backtested with a diversified portfolio spanning 30 years, resulting in a 33% improvement in the Sharpe Ratio compared to traditional strategies',
     logo: './qcf_square.png'
   },
   {
-    title: 'Michigan Data Science Team',
+    title: 'MLE @ Michigan Data Science Team',
+    date: 'Fall 2023',
     description:
-      'Collaborated with a team to develop a Real vs. Photoshopped Face Detector. Designed a Convolutional Neural Network on Jupyter using transfer learning with ResNet50 to train a model that can differentiate between a real and a photoshopped face with 72.3% accuracy. Augmented data images to diversify training data and visualized results using GradCam.',
+      'Collaborated with a team to develop a Real vs. Photoshopped Face Detector. Designed a Convolutional Neural Network on Jupyter using transfer learning with ResNet50 to train a model that can differentiate between a real and a photoshopped face with 72.3% accuracy. Augmented data images to diversify training data and visualized results using Grad-CAM.',
     logo: './mdst.jpeg'
   },
 ];
@@ -47,16 +65,9 @@ export default function Experience() {
           gap: { xs: 3, sm: 6 },
         }}
       >
-        <Box
-          sx={{
-            width: { sm: '100%', md: '60%' },
-            textAlign: { sm: 'left', md: 'center' },
-          }}
-        >
-          <Typography component="h2" variant="h4">
-            Experience
-          </Typography>
-        </Box>
+        <Typography component="h2" variant="h4">
+          Experience
+        </Typography>
         <Grid container spacing={2.5}>
           {items.map((item, index) => (
             <Grid item xs={12} sm={6} md={12} key={index}>
@@ -80,10 +91,17 @@ export default function Experience() {
                     height: '100%',
                   }}
                 >
-                  <Typography fontWeight="medium" variant="h6" gutterBottom sx={{ fontSize: '1.5rem' }} >
+                  <Typography fontWeight="medium" variant="h5" gutterBottom >
                     {item.title}
                   </Typography>
-                  <Typography variant="body1" sx={{ color: 'grey.400' }}>
+                  <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 1, mt: -2}}>
+                    <CalendarTodayIcon sx={{ fontSize: 18, color: '#b0b3b8' }} />
+                    <Typography variant="subtitle1">
+                      {item.date}
+                    </Typography>
+                  </Stack>
+                  
+                  <Typography variant="body1" color="text.secondary">
                     {item.description}
                   </Typography>
                 </Stack>
