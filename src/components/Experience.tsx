@@ -12,35 +12,35 @@ const items = [
     title: 'SWE Intern @ The Trade Desk',
     date: 'Summer 2025',
     description:
-      'Implemented a data pipeline in Scala using Apache Spark on an AWS EMR cluster to compute and export key metrics on external user IDs to S3 for monitoring and analysis. Scheduled the pipeline using Apache Airflow to ensure timely and reliable metric updates. Built a Databricks dashboard with SQL queries to visualize metrics and trends, enabling traders to determine the significance of a given external user ID.',
+      'Implemented a data pipeline in Scala that takes in ad inventory data and exports key metrics on external user IDs to S3 for monitoring and analysis. Scheduled the Spark job using Apache Airflow, which runs the pipeline weekly on an AWS EMR cluster. Built a Databricks dashboard with SQL queries to visualize the metrics and trends of the external user IDs.',
     logo: './ttd.jpg'
   },
   {
     title: 'SWE Intern @ Sorcea Labs',
     date: 'Winter 2025',
     description:
-      'Developed a web scraping pipeline to extract over 7,000 skincare products from Amazon, Ulta, and Sephora. Built an AWS Lambda function to clean and format product information using regular expressions and exported to DynamoDB for efficient querying. Designed a content-based semantic search system using Amazon Bedrock Embeddings and Anthropic’s Claude within a RAG framework to return contextually accurate results to user queries',
+      'Built an AWS Lambda function to clean and format over 7000 skincare products scraped from Amazon, Ulta, and Sephora using RegEx and exported to DynamoDB for efficient querying. Designed a content-based semantic search system using Amazon Bedrock Embeddings and Anthropic’s Claude within a RAG framework to return accurate results to user queries.',
     logo: './sorcealabs.jpeg'
   },
   {
     title: 'Undergraduate Research Assistant @ Ersal Research Group',
     date: 'Summer + Fall 2025',
     description:
-      'Developed a method of artificially generating terrains by simulating fractal Brownian surfaces, modeled as random Gaussian fields characterized by a fractal dimension, to create realistic landscapes in Julia. Implemented a function utilizing box-counting and epsilon-oscillation algorithms to estimate fractal dimensions. Assessed the realism of generated terrains by conducting vehicle simulations in Blender, verifying that the results closely resembled those obtained from real-world terrain.',
+      'Developed an algorithm to artificially generate terrains. Used box-counting and epsilon-oscillation algorithms to estimate the fractal dimensions of different kinds of terrains and simulated fractal Brownian surfaces to create realistic landscapes in Julia.',
     logo: './umMechE.png'
   },
   {
     title: 'PM @ Quantitative Consulting and Finance Group',
     date: 'Winter 2024 - Present',
     description:
-    'Implemented a momentum-based trading strategy with an RNN that predicts optimal asset positions. Backtested with a diversified portfolio spanning 30 years, resulting in a 33% improvement in the Sharpe Ratio compared to traditional strategies',
+    'Implemented a momentum-based trading strategy with an RNN that predicts optimal asset positions. Backtested with a diversified portfolio spanning 30 years, resulting in a 33% improvement in the Sharpe Ratio compared to traditional strategies.',
     logo: './qcf_square.png'
   },
   {
     title: 'MLE @ Michigan Data Science Team',
     date: 'Fall 2023',
     description:
-      'Collaborated with a team to develop a Real vs. Photoshopped Face Detector. Designed a Convolutional Neural Network on Jupyter using transfer learning with ResNet50 to train a model that can differentiate between a real and a photoshopped face with 72.3% accuracy. Augmented data images to diversify training data and visualized results using Grad-CAM.',
+      'Built a Real vs. Photoshopped Face Detector with 72.3% accuracy by coding up a CNN on a Jupyter notebook using transfer learning with ResNet50. Augmented data images to diversify training data and visualized results using Grad-CAM.',
     logo: './mdst.jpeg'
   },
 ];

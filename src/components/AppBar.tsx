@@ -31,9 +31,8 @@ const scrollToSection = (sectionId: string) => {
 function UnderlinedText ({section, currSection, children}){
   return (
   <div 
-    className={currSection === section ? 'underline-text' : 'text'}
+    className={`underline-text ${currSection === section ? 'active' : ''}`}
     onClick={() => scrollToSection(section)}
-    color="text.primary"
     style={{
       cursor: 'pointer',
     }}>

@@ -33,8 +33,12 @@ html,body {
   bottom: -5px;
   left: 0;
   transform-origin: left;
-  transition: transform 1s ease-out;
-  transform: scaleX(1);
+  transition: transform 0.3s ease-out;
+  transform: scaleX(0)
+}
+
+.underline-text.active::after {
+  transform: scaleX(1)
 }
 
 .text {
