@@ -84,7 +84,7 @@ export default function Features() {
             md={4}
           >
             <Box sx={{ width: '100%', display: 'flex', justifyContent: 'right'}}>
-              <Carousel images={images} />
+              <Carousel images={images} width={260} captions={[]} scaleOnHover={1.1} tiltOnHover={true} glowOnHover={true} speed={5000} />
             </Box>
           </Grid>
         </Grid>

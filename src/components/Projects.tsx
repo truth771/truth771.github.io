@@ -10,7 +10,7 @@ import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import Carousel from './ProjectCarousel.tsx';
+import Carousel from './PicSlideshow.tsx';
 import HoverPaper from './HoverPaper.tsx';
 
 import GithubIcon from '@mui/icons-material/GitHub';
@@ -38,6 +38,10 @@ const tiers = [
                 imgPath:
                   '/note2.png',
               },
+            ],
+    captions: [
+              'Homepage',
+              'Generate cheat sheet',
             ]
   },
   {
@@ -61,6 +65,11 @@ const tiers = [
                 imgPath:
                   '/pedagora3.png',
               },
+            ],
+    captions: [
+              'Homepage where you upload a video',
+              'Feedback on the quality of response',
+              'Feedback on your emotional state as well',
             ]
   },
 ];
@@ -111,18 +120,10 @@ export default function Projects() {
           >
             <HoverPaper props={
               <CardContent>
-                <Box
-                  sx={{
-                    mb: 1,
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                  }}
-                >
-                  <Typography variant="h6">
-                    {tier.title}
-                  </Typography>
-                </Box>
+                <Typography variant="h6">
+                  {tier.title}
+                </Typography>
+
                 <Divider
                   sx={{
                     my: 2,
@@ -130,15 +131,14 @@ export default function Projects() {
                     borderColor: 'grey.500',
                   }}
                 />
+
                 <Box sx={{
-                  py: 0,
-                  pb: 1,
                   display: 'flex',
-                  alignItems: 'center',
                   justifyContent: 'center'
                 }}>
-                  <Carousel images={tier.images} />
+                  <Carousel images={tier.images} width={450} captions={tier.captions} scaleOnHover={1.02} tiltOnHover={false} glowOnHover={false} speed={4000} />
                 </Box>
+
                   <Box
                     sx={{
                       py: 1,
@@ -148,15 +148,15 @@ export default function Projects() {
                     }}
                   >
                     
-                    <Typography
-                      component="text"
-                      variant="subtitle2"
-                      sx={{
-                        color: 'grey.200',
-                      }}
-                    >
-                      {tier.blurb}
-                    </Typography>
+                <Typography
+                  component="text"
+                  variant="subtitle2"
+                  sx={{
+                    color: 'grey.200',
+                  }}
+                >
+                  {tier.blurb}
+                </Typography>
 
                     
                   </Box>
