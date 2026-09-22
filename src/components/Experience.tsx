@@ -12,35 +12,35 @@ const items = [
     title: 'SDE Intern @ Amazon Eero',
     date: 'Summer 2026',
     description:
-      'Deployed a DNS health checker in Go to orchestrate DNS queries from the cloud across all eero nodes in the network, helping troubleshoot user connectivity issues. My code got shipped with the v7.18.0 firmware update.',
+      'Built a DNS health checker in Go, a service that probes nameservers from eero nodes to surface latency and error stats for network triage. Exposed it both as a support-facing diagnostic tool and directly within the eero app, shipping in the v7.18.0 firmware update.',
     logo: './eero.png'
   },
   {
-    title: 'Undergraduate Research Assistant @ Order Lab',
-    date: 'Winter 2026',
+    title: 'Research Assistant @ Order Lab',
+    date: 'Winter 2026 - Fall 2026',
     description:
-      'Worked on CIRDAN, an autonomous debugging LLM agent that employs phased, tree-structured multi-hypothesis triage to isolate failures in large-scale distributed systems. I created a Docker-based execution harness to enable validation subtasks via test-driven debugging, achieving 69.3% file-level and 42.8% line-level coverage and outperforming Codex, Mini SWE-agent, and OpenCode.',
+      'Worked on CIRDAN, an autonomous debugging agent using phased, tree-of-thought multi-hypothesis triage to isolate failures in distributed systems, plus a Docker-based test harness for validation subtasks. Achieved 69.3% file-level / 42.8% line-level coverage, outperforming Codex, Mini SWE-agent, and OpenCode.',
     logo: './orderlab.png'
   },
   {
     title: 'SWE Intern @ The Trade Desk',
     date: 'Summer 2025',
     description:
-      'Implemented a data pipeline in Scala that takes in ad inventory data and exports key metrics on external user IDs to S3 for monitoring and analysis. Scheduled the Spark job using Apache Airflow, which runs the pipeline weekly on an AWS EMR cluster. Built a Databricks dashboard with SQL queries to visualize the metrics and trends of the external user IDs.',
+      'Built a distributed Scala/Spark ETL pipeline on AWS EMR processing ~6TB of weekly bidstream data, orchestrated via Airflow. An "edge agreement" validation algorithm revealed ~40% of high-frequency identifiers lacked ground-truth correlation, preventing bad data promotion.',
     logo: './ttd.jpg'
   },
   {
     title: 'SWE Intern @ Sorcea Labs',
     date: 'Winter 2025',
     description:
-      'Built an AWS Lambda function to clean and format over 7000 skincare products scraped from Amazon, Ulta, and Sephora using RegEx and exported to DynamoDB for efficient querying. Designed a content-based semantic search system using Amazon Bedrock Embeddings and Anthropic’s Claude within a RAG framework to return accurate results to user queries.',
+      'Architected a dual-stage RAG platform for skincare recommendations across a 7,000+ item catalog, using Claude to parse queries into scalar filters (price, ingredients) and a semantic-intent string embedded via Amazon Bedrock. Combined metadata pre-filtering with MongoDB Atlas Vector Search to keep hard constraints from getting diluted, resolving ~85% of open-ended queries.',
     logo: './sorcealabs.jpeg'
   },
   {
     title: 'Undergraduate Research Assistant @ Ersal Research Group',
-    date: 'Summer + Fall 2025',
+    date: 'Summer - Fall 2024',
     description:
-      'Developed an algorithm to artificially generate terrains. Used box-counting and epsilon-oscillation algorithms to estimate the fractal dimensions of different kinds of terrains and simulated fractal Brownian surfaces to create realistic landscapes in Julia.',
+      'Designed an algorithm to generate realistic terrains by simulating fractal Brownian surfaces as random Gaussian fields, using box-counting and epsilon-oscillation methods to estimate fractal dimensions. Validated realism through vehicle simulations in Blender.',
     logo: './umMechE.png'
   },
 ];
