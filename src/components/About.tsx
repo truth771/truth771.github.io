@@ -60,8 +60,8 @@ export default function Features() {
             color="text.secondary"
             sx={{ mb: { xs: 2, sm: 4 } }}
           >
-            I'm studying <span style={{ color: '#e8bffb', fontWeight: 'bold' }}>CSE</span> and pursuing a Bachelor's Degree at the <span style={{ color: '#e8bffb', fontWeight: 'bold' }}>University of Michigan</span>, expecting to graduate in 2026. 
-            Some of the areas I'm interested in are <span style={{ color: '#e8bffb', fontWeight: 'bold' }}>Fintech</span> and <span style={{ color: '#e8bffb', fontWeight: 'bold' }}>ML/AI</span>.
+            I'm pursuing a <span style={{ color: '#e8bffb', fontWeight: 'bold' }}>Master's Degree in CSE</span> at the <span style={{ color: '#e8bffb', fontWeight: 'bold' }}>University of Michigan</span>, expecting to graduate in December 2027. 
+            Some of the areas I'm interested in are <span style={{ color: '#e8bffb', fontWeight: 'bold' }}>systems infra</span> and <span style={{ color: '#e8bffb', fontWeight: 'bold' }}>LLM agentic flows</span>.
           </Typography>
           <Typography
             variant="h5"

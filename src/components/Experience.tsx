@@ -9,6 +9,20 @@ import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 
 const items = [
   {
+    title: 'SDE Intern @ Amazon Eero',
+    date: 'Summer 2026',
+    description:
+      'Deployed a DNS health checker in Go to orchestrate DNS queries from the cloud across all eero nodes in the network, helping troubleshoot user connectivity issues. My code got shipped with the v7.18.0 firmware update.',
+    logo: './eero.png'
+  },
+  {
+    title: 'Undergraduate Research Assistant @ Order Lab',
+    date: 'Winter 2026',
+    description:
+      'Worked on CIRDAN, an autonomous debugging LLM agent that employs phased, tree-structured multi-hypothesis triage to isolate failures in large-scale distributed systems. I created a Docker-based execution harness to enable validation subtasks via test-driven debugging, achieving 69.3% file-level and 42.8% line-level coverage and outperforming Codex, Mini SWE-agent, and OpenCode.',
+    logo: './orderlab.png'
+  },
+  {
     title: 'SWE Intern @ The Trade Desk',
     date: 'Summer 2025',
     description:
@@ -28,20 +42,6 @@ const items = [
     description:
       'Developed an algorithm to artificially generate terrains. Used box-counting and epsilon-oscillation algorithms to estimate the fractal dimensions of different kinds of terrains and simulated fractal Brownian surfaces to create realistic landscapes in Julia.',
     logo: './umMechE.png'
-  },
-  {
-    title: 'PM @ Quantitative Consulting and Finance Group',
-    date: 'Winter 2024 - Present',
-    description:
-    'Implemented a momentum-based trading strategy with an RNN that predicts optimal asset positions. Backtested with a diversified portfolio spanning 30 years, resulting in a 33% improvement in the Sharpe Ratio compared to traditional strategies.',
-    logo: './qcf_square.png'
-  },
-  {
-    title: 'MLE @ Michigan Data Science Team',
-    date: 'Fall 2023',
-    description:
-      'Built a Real vs. Photoshopped Face Detector with 72.3% accuracy by coding up a CNN on a Jupyter notebook using transfer learning with ResNet50. Augmented data images to diversify training data and visualized results using Grad-CAM.',
-    logo: './mdst.jpeg'
   },
 ];
 
