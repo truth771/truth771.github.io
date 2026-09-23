@@ -4,7 +4,6 @@ import Box from '@mui/material/Box';
 import CardContent from '@mui/material/CardContent';
 import Container from '@mui/material/Container';
 import Divider from '@mui/material/Divider';
-import Grid from '@mui/material/Grid';
 
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
@@ -94,7 +93,130 @@ const tiers = [
   },
 ];
 
+function ProjectCard({ tier }) {
+  return (
+    <HoverPaper props={
+      <CardContent>
+        <Typography variant="h6">
+          {tier.title}
+        </Typography>
+
+        <Divider
+          sx={{
+            my: 2,
+            opacity: 0.2,
+            borderColor: 'grey.500',
+          }}
+        />
+
+        {tier.images && tier.images.length > 0 && (
+          <Box sx={{
+            display: 'flex',
+            justifyContent: 'center'
+          }}>
+            <Carousel images={tier.images} width={450} captions={tier.images.map((image) => image.label)} scaleOnHover={1.02} tiltOnHover={false} glowOnHover={false} speed={4000} />
+          </Box>
+        )}
+
+          <Box
+            sx={{
+              py: 1,
+              display: 'flex',
+              gap: 1.5,
+              alignItems: 'center',
+            }}
+          >
+
+        <Typography
+          component="text"
+          variant="subtitle2"
+          sx={{
+            color: 'grey.200',
+          }}
+        >
+          {tier.blurb}
+        </Typography>
+
+          </Box>
+          {(tier.github || tier.devpost || tier.arxiv) && (
+            <Stack
+                direction="row"
+                justifyContent="center"
+                spacing={1}
+                useFlexGap
+                sx={{
+                  color: 'text.secondary',
+                }}>
+
+                {tier.github && (
+                  <Tooltip title="GitHub" slotProps={{ popper: { modifiers: [ { name: 'offset', options: { offset: [0, -10], }, }, ], }, }} >
+                    <a
+                      href={tier.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <IconButton
+                        aria-label="GitHub"
+                        sx={{ alignSelf: 'center', color: "#B8BABC" }}
+                      >
+                        <GithubIcon />
+                      </IconButton>
+                    </a>
+                  </Tooltip>
+                )}
+
+                {tier.devpost && (
+                  <Tooltip title="Devpost" slotProps={{ popper: { modifiers: [ { name: 'offset', options: { offset: [0, -10], }, }, ], }, }} >
+                    <a
+                      href={tier.devpost}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <IconButton aria-label="Devpost"
+                                  sx={{ alignSelf: 'center'
+                                  }}>
+                      <img
+                        draggable='false'
+                        style={logoStyle}
+                        src={ './devpost.png' }
+                        alt="devpost logo"
+                      /> </IconButton>
+                    </a>
+                  </Tooltip>
+                )}
+
+                {tier.arxiv && (
+                  <Tooltip title="arXiv" slotProps={{ popper: { modifiers: [ { name: 'offset', options: { offset: [0, -10], }, }, ], }, }} >
+                    <a
+                      href={tier.arxiv}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <IconButton aria-label="arXiv"
+                                  sx={{ alignSelf: 'center'
+                                  }}>
+                      <img
+                        draggable='false'
+                        style={greyedLogoStyle}
+                        src={ './arxiv.png' }
+                        alt="arxiv logo"
+                      /> </IconButton>
+                    </a>
+                  </Tooltip>
+                )}
+              </Stack>
+          )}
+      </CardContent>
+    }>
+    </HoverPaper>
+  );
+}
+
 export default function Projects() {
+  const byTitle = (title) => tiers.find((tier) => tier.title === title);
+  const leftColumn = [byTitle('OS Thread Library'), byTitle('Noteworthy.ai')];
+  const rightColumn = [byTitle('Stochastics of News Article Propagation'), byTitle('Pedagora')];
+
   return (
     <Box // for the gradient
       sx={(theme) => ({
@@ -129,132 +251,30 @@ export default function Projects() {
         </Typography>
       </Box>
 
-      <Grid container spacing={7} alignItems="center" justifyContent="center">
-        {tiers.map((tier) => (
-          <Grid
-            item
-            key={tier.title}
-            xs={12}
-            sm={12}
-            md={6}
+      <Box
+        sx={{
+          width: '100%',
+          display: 'flex',
+          flexDirection: { xs: 'column', md: 'row' },
+          gap: '56px',
+        }}
+      >
+        {[leftColumn, rightColumn].map((column, columnIndex) => (
+          <Box
+            key={columnIndex}
+            sx={{
+              flex: 1,
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '56px',
+            }}
           >
-            <HoverPaper props={
-              <CardContent>
-                <Typography variant="h6">
-                  {tier.title}
-                </Typography>
-
-                <Divider
-                  sx={{
-                    my: 2,
-                    opacity: 0.2,
-                    borderColor: 'grey.500',
-                  }}
-                />
-
-                {tier.images && tier.images.length > 0 && (
-                  <Box sx={{
-                    display: 'flex',
-                    justifyContent: 'center'
-                  }}>
-                    <Carousel images={tier.images} width={450} captions={tier.images.map((image) => image.label)} scaleOnHover={1.02} tiltOnHover={false} glowOnHover={false} speed={4000} />
-                  </Box>
-                )}
-
-                  <Box
-                    sx={{
-                      py: 1,
-                      display: 'flex',
-                      gap: 1.5,
-                      alignItems: 'center',
-                    }}
-                  >
-                    
-                <Typography
-                  component="text"
-                  variant="subtitle2"
-                  sx={{
-                    color: 'grey.200',
-                  }}
-                >
-                  {tier.blurb}
-                </Typography>
-
-                    
-                  </Box>
-                  {(tier.github || tier.devpost || tier.arxiv) && (
-                    <Stack
-                        direction="row"
-                        justifyContent="center"
-                        spacing={1}
-                        useFlexGap
-                        sx={{
-                          color: 'text.secondary',
-                        }}>
-
-                        {tier.github && (
-                          <Tooltip title="GitHub" slotProps={{ popper: { modifiers: [ { name: 'offset', options: { offset: [0, -10], }, }, ], }, }} >
-                            <a
-                              href={tier.github}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              <IconButton
-                                aria-label="GitHub"
-                                sx={{ alignSelf: 'center', color: "#B8BABC" }}
-                              >
-                                <GithubIcon />
-                              </IconButton>
-                            </a>
-                          </Tooltip>
-                        )}
-
-                        {tier.devpost && (
-                          <Tooltip title="Devpost" slotProps={{ popper: { modifiers: [ { name: 'offset', options: { offset: [0, -10], }, }, ], }, }} >
-                            <a
-                              href={tier.devpost}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              <IconButton aria-label="Devpost"
-                                          sx={{ alignSelf: 'center'
-                                          }}>
-                              <img
-                                draggable='false'
-                                style={logoStyle}
-                                src={ './devpost.png' }
-                                alt="devpost logo"
-                              /> </IconButton>
-                            </a>
-                          </Tooltip>
-                        )}
-
-                        {tier.arxiv && (
-                          <Tooltip title="arXiv" slotProps={{ popper: { modifiers: [ { name: 'offset', options: { offset: [0, -10], }, }, ], }, }} >
-                            <a
-                              href={tier.arxiv}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              <IconButton aria-label="arXiv"
-                                          sx={{ alignSelf: 'center'
-                                          }}>
-                              <img
-                                draggable='false'
-                                style={greyedLogoStyle}
-                                src={ './arxiv.png' }
-                                alt="arxiv logo"
-                              /> </IconButton>
-                            </a>
-                          </Tooltip>
-                        )}
-                      </Stack>
-                  )}
-              </CardContent>}>
-            </HoverPaper>
-          </Grid>
+            {column.map((tier) => (
+              <ProjectCard key={tier.title} tier={tier} />
+            ))}
+          </Box>
         ))}
-      </Grid>
+      </Box>
     </Container>
     </Box>
   );
