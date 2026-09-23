@@ -21,7 +21,36 @@ const logoStyle = {
   cursor: 'pointer',
 };
 
+const greyedLogoStyle = {
+  ...logoStyle,
+  filter: 'grayscale(1) brightness(1.6)',
+};
+
 const tiers = [
+  {
+    title: 'OS Thread Library',
+    blurb: 'A class project building both a kernel-level and user-level threading library in C++. Implemented custom thread creation, preemptive scheduling, and monitor-style synchronization (mutexes + condition variables), plus IPI handling for multiprocessor systems. Eliminated use-after-free and stack-corruption races with a smart pointer ownership model guaranteeing no context resumes on freed memory.',
+    images: []
+  },
+  {
+    title: 'Stochastics of News Article Propagation',
+    arxiv: 'https://arxiv.org/abs/2608.21472',
+    blurb: 'A paper that models news cascades as dual stochastic processes: article volume over time and the mix of reliable vs. unreliable sources. Using the 2017 Las Vegas shooting and Hurricane Harvey as case studies, found that a hybrid Inhomogeneous-Poisson + Hawkes process best captures the initial surge of articles, followed by the self-reinforcing dynamics of article volume, with source reliability following a Markovian structure. Check it out below!',
+    images: [
+              {
+                label: 'Hybrid IHP + Hawkes fit vs. observed article volume',
+                imgPath:
+                  '/stochnews_intensity.png',
+                aspect: 1762 / 591,
+              },
+              {
+                label: 'Ratio of number of reliable to unreliable sources over time',
+                imgPath:
+                  '/stochnews_reliability.png',
+                aspect: 1930 / 729,
+              },
+            ]
+  },
   {
     title: 'Noteworthy.ai',
     github: 'https://github.com/AksheetDUTTA123/noteworthy',
@@ -38,10 +67,6 @@ const tiers = [
                 imgPath:
                   '/note2.png',
               },
-            ],
-    captions: [
-              'Homepage',
-              'Generate cheat sheet',
             ]
   },
   {
@@ -65,11 +90,6 @@ const tiers = [
                 imgPath:
                   '/pedagora3.png',
               },
-            ],
-    captions: [
-              'Homepage where you upload a video',
-              'Feedback on the quality of response',
-              'Feedback on your emotional state as well',
             ]
   },
 ];
@@ -132,12 +152,14 @@ export default function Projects() {
                   }}
                 />
 
-                <Box sx={{
-                  display: 'flex',
-                  justifyContent: 'center'
-                }}>
-                  <Carousel images={tier.images} width={450} captions={tier.captions} scaleOnHover={1.02} tiltOnHover={false} glowOnHover={false} speed={4000} />
-                </Box>
+                {tier.images && tier.images.length > 0 && (
+                  <Box sx={{
+                    display: 'flex',
+                    justifyContent: 'center'
+                  }}>
+                    <Carousel images={tier.images} width={450} captions={tier.images.map((image) => image.label)} scaleOnHover={1.02} tiltOnHover={false} glowOnHover={false} speed={4000} />
+                  </Box>
+                )}
 
                   <Box
                     sx={{
@@ -160,48 +182,74 @@ export default function Projects() {
 
                     
                   </Box>
-                  <Stack
-                      direction="row"
-                      justifyContent="center"
-                      spacing={1}
-                      useFlexGap
-                      sx={{
-                        color: 'text.secondary',
-                      }}>
+                  {(tier.github || tier.devpost || tier.arxiv) && (
+                    <Stack
+                        direction="row"
+                        justifyContent="center"
+                        spacing={1}
+                        useFlexGap
+                        sx={{
+                          color: 'text.secondary',
+                        }}>
 
-                      <Tooltip title="GitHub" slotProps={{ popper: { modifiers: [ { name: 'offset', options: { offset: [0, -10], }, }, ], }, }} >
-                        <a 
-                          href={tier.github}
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                        >
-                          <IconButton
-                            aria-label="GitHub"
-                            sx={{ alignSelf: 'center', color: "#B8BABC" }}
-                          >
-                            <GithubIcon />
-                          </IconButton>
-                        </a>
-                      </Tooltip>
+                        {tier.github && (
+                          <Tooltip title="GitHub" slotProps={{ popper: { modifiers: [ { name: 'offset', options: { offset: [0, -10], }, }, ], }, }} >
+                            <a
+                              href={tier.github}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <IconButton
+                                aria-label="GitHub"
+                                sx={{ alignSelf: 'center', color: "#B8BABC" }}
+                              >
+                                <GithubIcon />
+                              </IconButton>
+                            </a>
+                          </Tooltip>
+                        )}
 
-                      <Tooltip title="Devpost" slotProps={{ popper: { modifiers: [ { name: 'offset', options: { offset: [0, -10], }, }, ], }, }} >
-                        <a 
-                          href={tier.devpost}
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                        >
-                          <IconButton aria-label="Devpost"
-                                      sx={{ alignSelf: 'center'
-                                      }}>
-                          <img
-                            draggable='false'
-                            style={logoStyle}
-                            src={ './devpost.png' }
-                            alt="devpost logo"
-                          /> </IconButton>
-                        </a>
-                      </Tooltip>
-                    </Stack>
+                        {tier.devpost && (
+                          <Tooltip title="Devpost" slotProps={{ popper: { modifiers: [ { name: 'offset', options: { offset: [0, -10], }, }, ], }, }} >
+                            <a
+                              href={tier.devpost}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <IconButton aria-label="Devpost"
+                                          sx={{ alignSelf: 'center'
+                                          }}>
+                              <img
+                                draggable='false'
+                                style={logoStyle}
+                                src={ './devpost.png' }
+                                alt="devpost logo"
+                              /> </IconButton>
+                            </a>
+                          </Tooltip>
+                        )}
+
+                        {tier.arxiv && (
+                          <Tooltip title="arXiv" slotProps={{ popper: { modifiers: [ { name: 'offset', options: { offset: [0, -10], }, }, ], }, }} >
+                            <a
+                              href={tier.arxiv}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <IconButton aria-label="arXiv"
+                                          sx={{ alignSelf: 'center'
+                                          }}>
+                              <img
+                                draggable='false'
+                                style={greyedLogoStyle}
+                                src={ './arxiv.png' }
+                                alt="arxiv logo"
+                              /> </IconButton>
+                            </a>
+                          </Tooltip>
+                        )}
+                      </Stack>
+                  )}
               </CardContent>}>
             </HoverPaper>
           </Grid>
